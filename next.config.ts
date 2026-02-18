@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  // Disable React Compiler to fix compatibility issues with React 19
+  reactCompiler: false,
 };
 
 export default nextConfig;

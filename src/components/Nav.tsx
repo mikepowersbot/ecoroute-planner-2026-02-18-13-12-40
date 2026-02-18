@@ -14,6 +14,9 @@ export default function Nav() {
           <Link href="/how-it-works" className="text-sm font-medium hover:text-primary">
             How It Works
           </Link>
+          <Link href="/pricing" className="text-sm font-medium hover:text-primary">
+            Pricing
+          </Link>
           <Link href="/blog" className="text-sm font-medium hover:text-primary">
             Blog
           </Link>
