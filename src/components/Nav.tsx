@@ -11,6 +11,9 @@ export default function Nav() {
           <Link href="/" className="text-sm font-medium hover:text-primary">
             Home
           </Link>
+          <Link href="/about" className="text-sm font-medium hover:text-primary">
+            About
+          </Link>
           <Link href="/how-it-works" className="text-sm font-medium hover:text-primary">
             How It Works
           </Link>
