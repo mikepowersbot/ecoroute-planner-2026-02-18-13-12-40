@@ -1,93 +1,40 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import AlgorithmFlowDiagram from "@/components/AlgorithmFlowDiagram";
-import CarbonSavingsDiagram from "@/components/CarbonSavingsDiagram";
 
 export default function HowItWorks() {
   const algorithmSteps = [
-    {
-      id: 1,
-      label: "Data Collection",
-      description: "Real-time traffic, weather, elevation & transit",
-    },
-    {
-      id: 2,
-      label: "Carbon Calculation",
-      description: "Emissions per route & mode",
-    },
-    {
-      id: 3,
-      label: "Multi-Modal Analysis",
-      description: "All transport options evaluated",
-    },
-    {
-      id: 4,
-      label: "Route Optimization",
-      description: "Best eco-friendly path selected",
-    },
-  ];
-
-  const detailedSteps = [
     {
       step: 1,
       title: "Data Collection",
       description: "We gather real-time data on traffic patterns, road conditions, elevation changes, vehicle fuel efficiency, and public transit schedules to build a comprehensive picture of your journey options.",
       icon: "📡",
-      details: [
-        "Traffic flow & congestion patterns",
-        "Road grade & elevation profiles",
-        "Public transit schedules & delays",
-        "Weather conditions affecting efficiency",
-        "Vehicle-specific fuel/energy consumption data",
-      ],
     },
     {
       step: 2,
       title: "Carbon Calculation",
       description: "Our algorithm calculates carbon emissions for each potential route based on distance, vehicle type, traffic conditions, and energy consumption patterns. We factor in stop-and-go traffic, idling, and acceleration zones.",
       icon: "🧮",
-      details: [
-        "Distance-based emissions baseline",
-        "Traffic intensity multipliers",
-        "Stop-and-go penalty calculations",
-        "Vehicle type coefficients (gas, electric, hybrid)",
-        "Energy source carbon intensity (grid mix)",
-      ],
     },
     {
       step: 3,
       title: "Multi-Modal Analysis",
       description: "We evaluate all transportation modes—driving, walking, cycling, public transit, and combinations—to find the optimal eco-friendly path. Each mode is scored based on its environmental impact.",
       icon: "🔀",
-      details: [
-        "Pure driving routes",
-        "Mixed transit (park & ride, bike & ride)",
-        "Walking & cycling only options",
-        "Public transit connections",
-        "Electric vehicle charging considerations",
-      ],
     },
     {
       step: 4,
       title: "Route Optimization",
       description: "Using advanced algorithms, we balance carbon reduction with practical considerations like travel time, convenience, and accessibility to present you with the best eco-friendly options.",
       icon: "⚡",
-      details: [
-        "Pareto optimization (eco vs. time trade-offs)",
-        "Personal preference weighting",
-        "Accessibility requirements",
-        "Real-time constraint satisfaction",
-        "Multiple route options ranked by eco-score",
-      ],
     },
   ];
 
   const carbonFactors = [
-    { mode: "🚗 Gas Car", emissions: "404g CO₂/km", value: 404, color: "bg-red-100 dark:bg-red-950" },
-    { mode: "🚌 Bus", emissions: "105g CO₂/km", value: 105, color: "bg-orange-100 dark:bg-orange-950" },
-    { mode: "🚆 Train", emissions: "41g CO₂/km", value: 41, color: "bg-yellow-100 dark:bg-yellow-950" },
-    { mode: "🚲 Cycling", emissions: "0g CO₂/km", value: 0, color: "bg-green-100 dark:bg-green-950" },
-    { mode: "🚶 Walking", emissions: "0g CO₂/km", value: 0, color: "bg-green-100 dark:bg-green-950" },
-    { mode: "⚡ Electric Car", emissions: "53g CO₂/km", value: 53, color: "bg-lime-100 dark:bg-lime-950" },
+    { mode: "🚗 Gas Car", emissions: "404g CO₂/km", color: "bg-red-100 dark:bg-red-950" },
+    { mode: "🚌 Bus", emissions: "105g CO₂/km", color: "bg-orange-100 dark:bg-orange-950" },
+    { mode: "🚆 Train", emissions: "41g CO₂/km", color: "bg-yellow-100 dark:bg-yellow-950" },
+    { mode: "🚲 Cycling", emissions: "0g CO₂/km", color: "bg-green-100 dark:bg-green-950" },
+    { mode: "🚶 Walking", emissions: "0g CO₂/km", color: "bg-green-100 dark:bg-green-950" },
+    { mode: "⚡ Electric Car", emissions: "53g CO₂/km", color: "bg-lime-100 dark:bg-lime-950" },
   ];
 
   const trustFeatures = [
@@ -113,23 +60,6 @@ export default function HowItWorks() {
     },
   ];
 
-  const sampleRoute = {
-    traditional: {
-      mode: "Gas Car (Standard Route)",
-      icon: "🚗",
-      emissions: "404g CO₂/km",
-      value: 404,
-    },
-    eco: {
-      mode: "Electric Car + Transit",
-      icon: "⚡🚌",
-      emissions: "89g CO₂/km",
-      value: 89,
-    },
-    savings: 78,
-    distance: 15,
-  };
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -144,7 +74,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Algorithm Flow Diagram */}
+      {/* Algorithm Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">
@@ -154,41 +84,18 @@ export default function HowItWorks() {
             Our sophisticated algorithm analyzes multiple factors to find the route with the lowest environmental impact while still meeting your needs.
           </p>
 
-          <AlgorithmFlowDiagram steps={algorithmSteps} />
-        </div>
-      </section>
-
-      {/* Detailed Steps */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Understanding Each Step
-          </h2>
-
-          <div className="space-y-8">
-            {detailedSteps.map((item) => (
-              <Card key={item.step} className="overflow-visible">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {algorithmSteps.map((item) => (
+              <Card key={item.step} className="relative">
                 <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg shadow-lg shrink-0">
-                      {item.step}
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-4xl mb-2">{item.icon}</div>
-                      <CardTitle className="text-xl">{item.title}</CardTitle>
-                      <p className="text-muted-foreground mt-2">{item.description}</p>
-                    </div>
+                  <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg shadow-lg">
+                    {item.step}
                   </div>
+                  <div className="text-4xl mb-4 mt-2">{item.icon}</div>
+                  <CardTitle>{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                    {item.details.map((detail, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                        <span className="text-sm text-muted-foreground">{detail}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -197,35 +104,85 @@ export default function HowItWorks() {
       </section>
 
       {/* Visual Diagram Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
             Route Comparison Visualization
           </h2>
 
-          <CarbonSavingsDiagram
-            traditional={sampleRoute.traditional}
-            eco={sampleRoute.eco}
-            savings={sampleRoute.savings}
-            distance={sampleRoute.distance}
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Traditional Route */}
+            <Card className="border-red-200 dark:border-red-900">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <span className="text-2xl">🚗</span>
+                  Traditional Route
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Distance</span>
+                    <span className="text-muted-foreground">12.4 km</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Time</span>
+                    <span className="text-muted-foreground">24 min</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">CO₂ Emissions</span>
+                    <span className="text-red-600 dark:text-red-400 font-bold">5.0 kg</span>
+                  </div>
+                  <div className="h-2 bg-red-100 dark:bg-red-950 rounded-full overflow-hidden">
+                    <div className="h-full bg-red-500 w-3/4"></div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-          <div className="mt-8 p-6 bg-muted rounded-lg">
-            <h3 className="font-semibold mb-2">💡 Real Impact</h3>
-            <p className="text-muted-foreground">
-              On a typical 15 km journey, choosing an eco-friendly route with mixed transit can save up to 4.7 kg of CO₂ emissions. That&apos;s equivalent to:
+            {/* Eco Route */}
+            <Card className="border-green-200 dark:border-green-900">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <span className="text-2xl">🌱</span>
+                  EcoRoute Recommendation
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Distance</span>
+                    <span className="text-muted-foreground">13.1 km</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Time</span>
+                    <span className="text-muted-foreground">28 min</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">CO₂ Emissions</span>
+                    <span className="text-green-600 dark:text-green-400 font-bold">2.8 kg</span>
+                  </div>
+                  <div className="h-2 bg-green-100 dark:bg-green-950 rounded-full overflow-hidden">
+                    <div className="h-full bg-green-500 w-2/4"></div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-lg font-semibold text-green-600 dark:text-green-400">
+              ✓ 44% reduction in carbon emissions
             </p>
-            <ul className="list-disc list-inside mt-3 space-y-1 text-sm text-muted-foreground">
-              <li>The amount of CO₂ absorbed by 190 trees in one month</li>
-              <li>Driving 47 km less in a gas car</li>
-              <li>Charging your smartphone 520 times</li>
-            </ul>
+            <p className="text-sm text-muted-foreground mt-2">
+              Just 4 extra minutes saves 2.2 kg of CO₂—equivalent to planting 0.1 trees
+            </p>
           </div>
         </div>
       </section>
 
       {/* Carbon Factors Section */}
-      <section className="py-16 px-4 bg-muted/30">
+      <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">
             Carbon Emissions by Transport Mode
@@ -243,46 +200,32 @@ export default function HowItWorks() {
                       <span className="text-2xl">{item.mode.split(" ")[0]}</span>
                       <span>{item.mode.split(" ").slice(1).join(" ")}</span>
                     </div>
-                    <span className={`font-mono font-bold ${item.value === 0 ? "text-green-600 dark:text-green-400" : ""}`}>
+                    <span className={`font-bold ${item.emissions.includes("0") ? "text-green-600 dark:text-green-400" : ""}`}>
                       {item.emissions}
                     </span>
                   </div>
-                  {item.value > 0 && (
-                    <div className="mt-3 h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className={`h-full ${item.value > 200 ? "bg-red-500" : item.value > 50 ? "bg-yellow-500" : "bg-green-500"} transition-all duration-1000 ease-out`}
-                        style={{ width: `${(item.value / 404) * 100}%` }}
-                      />
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="mt-8 p-6 bg-muted rounded-lg">
-            <h3 className="font-semibold mb-2">📊 Data Sources</h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Our emission factors are based on comprehensive life-cycle analysis including:
+            <h3 className="font-semibold mb-2">💡 Did You Know?</h3>
+            <p className="text-muted-foreground">
+              The average passenger vehicle produces about 404 grams of CO₂ per mile. By choosing eco-friendly routes, you can significantly reduce your personal carbon footprint. A 10 km eco-route instead of a traditional route saves approximately 2.2 kg of CO₂—the same amount a tree absorbs in about 3 months.
             </p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-              <li>U.S. Environmental Protection Agency (EPA) emission standards</li>
-              <li>European Environment Agency (EEA) transport data</li>
-              <li>IPCC guidelines for greenhouse gas inventories</li>
-              <li>Grid electricity carbon intensity by region</li>
-            </ul>
           </div>
         </div>
       </section>
 
       {/* Trust Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">
             Built on Trust & Transparency
           </h2>
           <p className="text-center text-muted-foreground mb-12">
-            We&apos;re committed to providing accurate, verifiable environmental impact data.
+            We're committed to providing accurate, verifiable environmental impact data.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -302,7 +245,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 text-center bg-muted/30">
+      <section className="py-20 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Make a Difference?
