@@ -20,6 +20,9 @@ export default function Nav() {
           <Link href="/blog" className="text-sm font-medium hover:text-primary">
             Blog
           </Link>
+          <Link href="/faq" className="text-sm font-medium hover:text-primary">
+            FAQ
+          </Link>
         </div>
       </div>
     </nav>
